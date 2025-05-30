@@ -1,6 +1,5 @@
 # AstroPaper with I18n
 
-🌍 [اقرأنى بالعربية](README.ar.md)
 
 <div align='center'>
 
