@@ -1,5 +1,0 @@
-
-User-agent: *
-Allow: /
-
-Sitemap: https://astro-paper-i18n.netlify.app/sitemap-index.xml
