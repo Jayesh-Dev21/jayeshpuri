@@ -3,36 +3,38 @@ name: Deploy Astro site to GitHub Pages
 on:
   push:
     branches:
-      - main  # Run this workflow when pushing to the main branch
+      - main
   workflow_dispatch:
 
 jobs:
-  build-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source code
+      - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: npm install
+        run: pnpm install
 
-      - name: Build the Astro site
-        run: npm run build
+      - name: Build Astro site
+        run: pnpm run build
 
-      - name: Add CNAME to dist/
-        run: |
-          echo 'yourdomain.com' > dist/CNAME  # Replace with your actual domain
+      - name: Add CNAME file (optional for custom domain)
+        run: echo 'yourdomain.com' > dist/CNAME
 
-      - name: Deploy to gh-pages branch
+      - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
           publish_dir: ./dist
+          force_orphan: true
