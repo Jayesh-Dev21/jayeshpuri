@@ -12,13 +12,19 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
+
+
+  site: SITE.website,
+
   i18n: {
+
     locales: SUPPORTED_LOCALES,
+
     defaultLocale: DEFAULT_LOCALE,
+
   },
   
-  site: 'https://Jayesh-Dev21.github.io',
-  base: 'my-repo',
+  
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
