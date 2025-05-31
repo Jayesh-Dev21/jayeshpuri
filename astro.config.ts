@@ -12,11 +12,13 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  site: SITE.website,
   i18n: {
     locales: SUPPORTED_LOCALES,
     defaultLocale: DEFAULT_LOCALE,
   },
+  
+  site: 'https://Jayesh-Dev21.github.io',
+  base: 'my-repo',
   integrations: [
     sitemap({
       filter: page => SITE.showArchives || !page.endsWith("/archives"),
@@ -50,8 +52,8 @@ export default defineConfig({
   },
   image: {
     // Used for all Markdown images; not configurable per-image
-    // // Used for all `<Image />` and `<Picture />` components unless overridden with a prop
-    // experimentalLayout: "responsive",
+    // Used for all `<Image />` and `<Picture />` components unless overridden with a prop
+    experimentalLayout: "responsive",
   },
   experimental: {
     svg: true,
